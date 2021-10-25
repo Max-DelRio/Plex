@@ -1,0 +1,23 @@
+{
+  "name": "plex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Max-DelRio/Plex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Max-DelRio/Plex/issues"
+  },
+  "homepage": "https://github.com/Max-DelRio/Plex#readme",
+  "dependencies": {
+    "firebase": "^9.1.3"
+  }
+}
