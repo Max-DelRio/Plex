@@ -33,9 +33,7 @@
             </button>
             <ul class="navbar-nav px-3">
               <li class="nav-item text-nowrap">
-                <form id="logout">
-                <button type="submit" class="nav-link" style="background-color:transparent; border: transparent;">Sign out</button>
-                </form>
+                <a class="nav-link" href="#">Sign out</a>
               </li>
             </ul>
           </nav>
@@ -70,15 +68,15 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="usermanagement.html">
-                        <span data-feather="bar-chart-2"></span>
-                        User Management
-                      </a>
-                    </li>
-                    <li class="nav-item">
                       <a class="nav-link" href="#">
                         <span data-feather="layers"></span>
                         Settings
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="um" class="nav-link" href="usermanagement.html">
+                        <span data-feather="bar-chart-2"></span>
+                        User Management
                       </a>
                     </li>
                   </ul>
@@ -97,7 +95,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-    <script type="module" src="./js/signout.js"></script>
+    
+    <script type="module" src="./js/admin.js"></script>
+    
     </body>
 
 </html>

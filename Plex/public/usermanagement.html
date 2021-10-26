@@ -34,9 +34,7 @@
             </button>
             <ul class="navbar-nav px-3">
               <li class="nav-item text-nowrap">
-                  <form id="logout">
-                  <button type="submit" class="nav-link" style="background-color:transparent; border: transparent;">Sign out</button>
-                  </form>
+                <a class="nav-link" href="#">Sign out</a>
               </li>
             </ul>
           </nav>
@@ -71,15 +69,15 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                          <span data-feather="home"></span>
-                          User Management <span class="sr-only">(current)</span>
-                        </a>
-                      </li>
-                    <li class="nav-item">
                       <a class="nav-link" href="#">
                         <span data-feather="layers"></span>
                         Settings
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="um" class="nav-link active" href="#">
+                        <span data-feather="home"></span>
+                        User Management <span class="sr-only">(current)</span>
                       </a>
                     </li>
                   </ul>
@@ -87,26 +85,59 @@
               </nav>
     </div>
 
-    <div class="col-md-3 col-lg-2 d-md-block"></div>
+    <div style="padding-left: 300px; padding-top: 25px;">
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
+        Add User
+      </button>
+      
+      <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add User</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="addUser">
+                <label for="first" style="color: black;">First Name</label>
+                <input type="text" id="first" class="form-control" placeholder="First Name" aria-describedby="addon-wrapping">
+                <label for="last" style="color: black;">Last Name</label>
+                <input type="text" id="last" class="form-control" placeholder="Last Name" aria-describedby="addon-wrapping">
+                <label for="email" style="color: black;">Email</label>
+                <input type="text" id="email" class="form-control" placeholder="Email" aria-describedby="addon-wrapping">
+                <label for="password" style="color: black;">Temporary Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Temporary Password" aria-describedby="addon-wrapping">
+                <label for="role" style="color: black;">Role</label>
+                <select id="role" class="form-control">
+                  <option value="Admin">Admin</option>
+                  <option value="Employee">Employee</option>
+                </select>
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div>
-    <table class="table table-light table-hover d-flex justify-content-center">
+    <table class="table table-light table-hover">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Email</th>
           <th scope="col">Role</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody id="table"></tbody>
       </table>
     </div>
 
     <template id="userRow">
       <tr>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -117,6 +148,10 @@
     <!---bootstrap dependency--->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    
     <!---firebase js sdk--->
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
@@ -124,9 +159,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-    <script type="module" src="./js/signout.js"></script>  
+    <script type="module" src="./js/usermanagement.js"></script>
+    <script type="module" src="./js/admin.js"></script>
+  
   </body>
 
 </html>
