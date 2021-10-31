@@ -24,7 +24,6 @@
 
     <body>
 
-      <div>
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
             <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
                 <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
@@ -53,15 +52,15 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="materials.html">
-                        <span data-feather="file"></span>
-                        Materials
-                      </a>
+                        <a class="nav-link" href="materials.html">
+                            <span data-feather="home"></span>
+                            Materials
+                        </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="products.html">
-                        <span data-feather="shopping-cart"></span>
-                        Products
+                      <a class="nav-link active" href="#">
+                          <span data-feather="home"></span>
+                          Products <span class="sr-only">(current)</span>
                       </a>
                     </li>
                     <li class="nav-item">
@@ -77,83 +76,88 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a id="um" class="nav-link active" href="#">
-                        <span data-feather="home"></span>
-                        User Management <span class="sr-only">(current)</span>
+                      <a id="um" class="nav-link" href="usermanagement.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        User Management
                       </a>
                     </li>
                   </ul>
                 </div>
               </nav>
-    </div>
-
-    <div style="padding-left: 300px; padding-top: 25px;">
-      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
-        Add User
-      </button>
-      
-      <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add User</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
             </div>
-            <div class="modal-body">
-              <form id="addUser">
-                <label for="first" style="color: black;">First Name</label>
-                <input type="text" id="first" class="form-control" placeholder="First Name" aria-describedby="addon-wrapping">
-                <label for="last" style="color: black;">Last Name</label>
-                <input type="text" id="last" class="form-control" placeholder="Last Name" aria-describedby="addon-wrapping">
-                <label for="email" style="color: black;">Email</label>
-                <input type="text" id="email" class="form-control" placeholder="Email" aria-describedby="addon-wrapping">
-                <label for="password" style="color: black;">Temporary Password</label>
-                <input type="password" id="password" class="form-control" placeholder="Temporary Password" aria-describedby="addon-wrapping">
-                <label for="role" style="color: black;">Role</label>
-                <select id="role" class="form-control">
-                  <option value="Employee">Employee</option>
-                  <option value="Admin">Admin</option>
-                </select>
-                <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Add</button>
-                </div>
-              </form>
+
+
+      <div style="padding-left: 300px; padding-top: 25px;">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
+          Add Product
+        </button>
+        
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="addProduct">
+                  <label for="name" style="color: black;">Product Name</label>
+                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+
+                  <label for="ID" style="color: black;">ID</label>
+                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+
+                  <label for="category" style="color: black;">Category</label>
+                  <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+
+                  <label for="quantity" style="color: black;">Quantity</label>
+                  <input type="text" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+                  <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Add</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-    <table class="table table-light table-hover">
-      <thead>
+        <table class="table table-light table-hover">
+        <thead>
+            <tr>
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">ID</th>
+            <th scope="col">Category</th>
+            <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+        </tbody>
+        </table>
+    
+        <template id="productRow">
         <tr>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Email</th>
-          <th scope="col">Role</th>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+                <td>
+                    <form>
+                        <input class="form-control" type="text" style="width: 50px; height: 30px;">
+                        <td><button class="btn btn-dark d-flex justify-content-center" type="submit" style="height: 30px; align-items: center;">Save</button></td>
+                    </form>
+                </td>
+            <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>
         </tr>
-      </thead>
-      <tbody id="table"></tbody>
-      </table>
-    </div>
-
-    <template id="userRow">
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </template>
+        </template>
     
     <!---bootstrap dependency--->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
-    
     <!---firebase js sdk--->
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
@@ -161,10 +165,13 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 
-    <script type="module" src="./js/usermanagement.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    
     <script type="module" src="./js/admin.js"></script>
     <script type="module" src="./js/signout.js"></script>
-  
-  </body>
+    <script type="module" src="./js/products.js"></script>
+    
+    </body>
 
 </html>
