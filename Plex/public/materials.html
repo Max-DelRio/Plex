@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <!---title--->
+    <title>Plex Art</title>
+
+    <link rel="shortcut icon" type="svg" href="archive.svg">
+    
+    <!---bootstrap core--->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="dashboard.css">
+
+    <!---jquery dependency--->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+              </svg> Plex Art</a>
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="navbar-nav px-3">
+              <li class="nav-item text-nowrap">
+                <form id="logout">
+                  <button type="submit" class="nav-link" style="background-color:transparent; border: transparent;">Sign out</button>
+                  </form>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="container-fluid">
+            <div class="row">
+              <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link" href="dashboard.html">
+                        <span data-feather="home"></span>
+                        Dashboard
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="home"></span>
+                            Materials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">
+                          <span data-feather="home"></span>
+                          Products <span class="sr-only">(current)</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        <span data-feather="users"></span>
+                        Tracking
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">
+                        <span data-feather="layers"></span>
+                        Settings
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="um" class="nav-link" href="usermanagement.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        User Management
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+
+      <div>
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style=" margin-left: 300px; margin-top: 25px;">
+          Add Product
+        </button>
+        
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="addMaterial">
+                  <label for="name" style="color: black;">Product Name</label>
+                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+
+                  <label for="ID" style="color: black;">ID</label>
+                  <input type="text" id="last" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+
+                  <label for="supplier" style="color: black;">Supplier</label>
+                  <input type="text" id="supplier" class="form-control" placeholder="Supplier" aria-describedby="addon-wrapping">
+
+                  <label for="thickness" style="color: black;">Thickness</label>
+                  <input type="text" id="thickness" class="form-control" placeholder="Thickness" aria-describedby="addon-wrapping">
+
+                  <label for="size" style="color: black;">Size</label>
+                  <input type="text" id="size" class="form-control" placeholder="Size" aria-describedby="addon-wrapping">
+
+                  <label for="Description" style="color: black;">Description</label>
+                  <input type="text" id="description" class="form-control" placeholder="Description" aria-describedby="addon-wrapping">
+
+                  <label for="Quantity" style="color: black;">Quantity</label>
+                  <input type="text" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+
+                  <label for="totalPrice" style="color: black;">Total Price</label>
+                  <input type="text" id="totalPrice" class="form-control" placeholder="Total Price" aria-describedby="addon-wrapping">
+
+                  <label for="estimated" style="color: black;">Estimated Delivery Date</label>
+                  <input type="text" id="estimated" class="form-control" placeholder="Estimated Delivery Date" aria-describedby="addon-wrapping">
+
+                  <label for="shipping" style="color: black;">Shipping Method</label>
+                  <input type="text" id="shipping" class="form-control" placeholder="Shipping Method" aria-describedby="addon-wrapping">
+
+                  <label for="Location" style="color: black;">Location</label>
+                  <input type="text" id="location" class="form-control" placeholder="Location" aria-describedby="addon-wrapping">
+                  <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Add</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-left: 300px; padding-top: 25px; padding-right: 30px; width: 100%; margin: 0;">
+            <table class="table table-light table-hover" style="width: 100%; margin: 0;">
+            <thead>
+                <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">ID</th>
+                <th scope="col">Supplier</th>
+                <th scope="col">Thickness</th>
+                <th scope="col">Size</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Est. Delivery Date</th>
+                <th scope="col">Shipping Method</th>
+                <th scope="col">Location</th>
+              </tr>
+            </thead>
+            <tbody id="table">
+                <tr>
+                    <td>1</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                        <td>
+                            <form>
+                                <input class="form-control" type="text" style="width: 50px; height: 30px;">
+                                <td><button class="btn btn-dark d-flex justify-content-center" type="submit" style="height: 30px; align-items: center;">Save</button></td>
+                            </form>
+                        </td>
+                    <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    
+        <template id="materialRow">
+        <tr>
+          <tr>
+            <td>1</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+                <td>
+                    <form>
+                        <input class="form-control" type="text" style="width: 50px; height: 30px;">
+                        <td><button class="btn btn-dark d-flex justify-content-center" type="submit" style="height: 30px; align-items: center;">Save</button></td>
+                    </form>
+                </td>
+            <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>
+        </tr>
+        </template>
+    
+    <!---bootstrap dependency--->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+    <!---firebase js sdk--->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    
+    <script type="module" src="./js/admin.js"></script>
+    <script type="module" src="./js/signout.js"></script>
+    
+    </body>
+
+</html>
