@@ -15,7 +15,7 @@ const firebaseConfig = {
 const auth = firebase.auth();
 const db = firebase.firestore();
 var count = 1;
-
+var upButton = document.getElementById("updateButton");
 db.collection("Products").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         const id = doc.id;
@@ -52,8 +52,47 @@ db.collection("Products").get().then((querySnapshot) => {
                 if(choice){
                     wait();
                     async function wait(){
-                        const newQuantity = txt[0].value
+                        const newQuantity = txt[0].value;
                         const res = await Promise.resolve(db.collection("Products").doc(id).update({quantity: newQuantity}));
+                        location.reload();
+                    }
+                }
+                else{
+                    location.reload();
+                }
+            }
+            
+            button[2].onclick = function() {
+                var choice = confirm("Do you want to update?");
+                if(choice){
+                  
+                    wait();
+                    async function wait(){
+                        const updated_Name = txt[1].value;
+                        const updated_ID = txt[2].value;
+                        const updated_Cateogry = txt[3].value;
+                        const updated_QUantity = txt[4].value;
+                        const res = await Promise.resolve(db.collection("Products").doc(id).update({name: updated_Name, id: updated_ID, category: updated_Cateogry, quantity: updated_QUantity}));
+                        location.reload();
+                    }
+                }
+                else{
+                    location.reload();
+                }
+            }
+
+                button[3].onclick = function() {
+                var choice = confirm("Do you want to update product?");
+                if(choice){
+                  
+                    wait();
+                    async function wait(){
+                        const updated_Name2 = txt[1].value;
+                        const updated_ID2 = txt[2].value;
+                        const updated_Cateogry2 = txt[3].value;
+                        const updated_QUantity2 = txt[4].value;
+                        const res = await Promise.resolve(db.collection("Products").doc(id).update({name: updated_Name2, id: updated_ID2, category: updated_Cateogry2, quantity: updated_QUantity2}));
+                        
                         location.reload();
                     }
                 }
@@ -84,31 +123,22 @@ document.querySelector("#addProduct").addEventListener("submit", function AddPro
 
 document.querySelector("#editProduct").addEventListener("submit", function EditProduct(e) {
     e.preventDefault();
-    db.collection("Products").get().then((querySnapshot) =>
-    {
-    querySnapshot.forEach((doc) => 
-        {
-            const docid = doc.id;
-            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().category, doc.data().quantity);
-
-                const name = doc.data().name;
-                const ID = doc.data().id;
-                const category = doc.data().category;
-                const quantity = doc.data().quantity;
-                wait();
-                async function wait()
-                {
+    
+        const id = doc.id;
+        console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().category, doc.data().quantity);
+        
+        wait();
+        async function wait(){    
                     
-                    let result = await Promise.resolve(db.collection("Products").doc(docid).set({name: name , id: ID , category: category , quantity: quantity }));
-                    //window.alert("test");
-                    location.reload();
-                    
-                }
+            const updated_Name2 = txt[0].value;
+            const updated_ID2 = txt[1].value;
+            const updated_Cateogry2 = txt[2].value;
+            const updated_QUantity2 = txt[3].value;
+            const res = await Promise.resolve(db.collection("Products").doc(id).update({name: updated_Name2, id: updated_ID2, category: updated_Cateogry2, quantity: updated_QUantity2}));
             
-        })
-                
-    })
-
+            location.reload();
+        }       
+    
 });
 
 

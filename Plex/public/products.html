@@ -132,24 +132,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                <form id="editProduct">
-                  <label for="name" style="color: black;">Product Name</label>
-                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
 
-                  <label for="ID" style="color: black;">ID</label>
-                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
-
-                  <label for="category" style="color: black;">Category</label>
-                  <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
-
-                  <label for="quantity" style="color: black;">Quantity</label>
-                  <input type="text" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
-                  <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit</button>
-                  </div>
-                </form>
-              </div>
             </div>
           </div>
         </div>
@@ -186,7 +169,24 @@
                 </td>
             <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>
             <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="height: 30px; align-items: center;"> Edit </button></td>
+            <td>              <div class="modal-body">
+              <form id="editProduct">
+                <label for="name" style="color: black;">Product Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
 
+                <label for="ID" style="color: black;">ID</label>
+                <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+
+                <label for="category" style="color: black;">Category</label>
+                <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+
+                <label for="quantity" style="color: black;">Quantity</label>
+                <input type="text" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+                <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit Popup</button>
+                </div>
+              </form>
+            </div></td>
             
         </tr>
         </template>
