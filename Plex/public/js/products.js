@@ -46,6 +46,21 @@ db.collection("Products").get().then((querySnapshot) => {
                     location.reload();
                 }
             }
+            var txt = clone.querySelectorAll("input");
+            button[0].onclick = function() {
+                var choice = confirm("Do you want to update the quantity?");
+                if(choice){
+                    wait();
+                    async function wait(){
+                        const newQuantity = txt[0].value
+                        const res = await Promise.resolve(db.collection("Products").doc(id).update({quantity: newQuantity}));
+                        location.reload();
+                    }
+                }
+                else{
+                    location.reload();
+                }
+            }
 
             tbody.appendChild(clone);
         }
