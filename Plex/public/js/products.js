@@ -67,6 +67,36 @@ document.querySelector("#addProduct").addEventListener("submit", function AddPro
         }
 });
 
+document.querySelector("#editProduct").addEventListener("submit", function EditProduct(e) {
+    e.preventDefault();
+    db.collection("Products").get().then((querySnapshot) =>
+    {
+    querySnapshot.forEach((doc) => 
+        {
+            const docid = doc.id;
+            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().category, doc.data().quantity);
+
+                const name = doc.data().name;
+                const ID = doc.data().id;
+                const category = doc.data().category;
+                const quantity = doc.data().quantity;
+                wait();
+                async function wait()
+                {
+                    
+                    let result = await Promise.resolve(db.collection("Products").doc(docid).set({name: name , id: ID , category: category , quantity: quantity }));
+                    //window.alert("test");
+                    location.reload();
+                    
+                }
+            
+        })
+                
+    })
+
+});
+
+
 
 
 
