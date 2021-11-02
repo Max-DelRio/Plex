@@ -91,6 +91,12 @@
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
           Add Product
         </button>
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="margin-bottom: 10px;">
+          Edit Product
+        </button>
+        <button type="button" class="btn btn-dark" id="clear" style="margin-bottom: 10px;">
+          Clear Selection
+        </button>
         
         <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -123,7 +129,39 @@
           </div>
         </div>
 
-        <table class="table table-light table-hover">
+        <!-- <div> -->
+        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="editProduct">
+                  <label for="ename" style="color: black;">Product Name</label>
+                  <input type="text" id="ename" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+
+                  <label for="eID" style="color: black;">ID</label>
+                  <input type="text" id="eID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+
+                  <label for="ecategory" style="color: black;">Category</label>
+                  <input type="text" id="ecategory" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+
+                  <label for="equantity" style="color: black;">Quantity</label>
+                  <input type="text" id="equantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+                  <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table id="products" class="table table-light table-hover">
         <thead>
             <tr>
             <th scope="col"></th>
@@ -145,10 +183,11 @@
             <td></td>
             <td></td>
             <td></td>
+            <td style="display: none;"></td>
                 <td>
                     <form>
-                        <input id="update_quantity" class="form-control" type="text" style="width: 50px; height: 30px;">
-                        <td><button class="btn btn-dark d-flex justify-content-center" type="submit" style="height: 30px; align-items: center;">Save</button></td>
+                        <input class="form-control" type="text" style="width: 50px; height: 30px;" required>
+                        <td><button class="btn btn-dark d-flex justify-content-center" type="submit" onsubmit="editQuantity()" style="height: 30px; align-items: center;">Save</button></td>
                     </form>
                 </td>
             <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>
