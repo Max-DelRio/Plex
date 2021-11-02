@@ -33,7 +33,9 @@
             </button>
             <ul class="navbar-nav px-3">
               <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
+                <form id="logout">
+                  <button type="submit" class="nav-link" style="background-color:transparent; border: transparent;">Sign out</button>
+                  </form>
               </li>
             </ul>
           </nav>
@@ -50,15 +52,15 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="materials.html">
                         <span data-feather="file"></span>
-                        Products
+                        Materials
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="products.html">
                         <span data-feather="shopping-cart"></span>
-                        Materials
+                        Products
                       </a>
                     </li>
                     <li class="nav-item">
@@ -74,7 +76,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a id="um" class="nav-link" href="usermanagement.html">
+                      <a id="um" class="nav-link" href="usermanagement.html" style="display: none;">
                         <span data-feather="bar-chart-2"></span>
                         User Management
                       </a>
@@ -97,6 +99,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     
     <script type="module" src="./js/admin.js"></script>
+    <script type="module" src="./js/signout.js"></script>
     
     </body>
 
