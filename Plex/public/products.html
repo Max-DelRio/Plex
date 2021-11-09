@@ -20,6 +20,12 @@
     <!---jquery dependency--->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <style>
+      .employee {
+        display: none;
+      }
+    </style>
+
     </head>
 
     <body>
@@ -58,7 +64,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="#">
+                      <a id="pro" class="nav-link active" href="products.html" style="display: none;">
                           <span data-feather="home"></span>
                           Products <span class="sr-only">(current)</span>
                       </a>
@@ -88,14 +94,36 @@
 
 
       <div style="padding-left: 300px; padding-top: 25px;">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
-          Add Product
-        </button>
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="margin-bottom: 10px;">
-          Edit Product
-        </button>
-        <button type="button" class="btn btn-dark" id="clear" style="margin-bottom: 10px;">
-          Clear Selection
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="height: 40px; width: 150px;">
+              Add Product
+            </button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="height: 40px; width: 150px; margin: 10px;">
+              Edit Product
+            </button>
+            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px;">
+              Clear Selection
+            </button>
+        <form id="sort">
+          <div style="float: left;">
+          <select id="sortCate" class="form-control" style="width: 150px; margin-right: 5px;">
+            <option value="select">Select...</option>
+            <option value="name">Name</option>
+            <option value="id">ID</option>
+            <option value="category">Category</option>
+            <option value="quantity">Quantity</option>
+          </select>
+        </div>
+        <div style="float: left;">
+            <input type="text" id="query" class="form-control" placeholder="Search" aria-describedby="addon-wrapping" style="height: 40px; width: 150px; margin-left: 10px;">
+          </div>
+          <div style="float: left;">
+            <button type="button" class="btn btn-dark" id="filter" style="height: 40px; width: 150px; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">
+              Filter
+            </button>
+          </div>
+        </form>
+        <button type="button" class="btn btn-dark" id="clearFilter" style="height: 40px; width: 150px; margin-bottom: 10px;">
+          Clear Filter
         </button>
         
         <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
