@@ -27,13 +27,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 if(doc.exists){
                     console.log(doc);
                     var role = doc.data().role;
+                    console.log(role);
                     if(role == "Employee")
                     {
                         document.getElementById("um").style.display = "none";
+                        document.getElementById("pro").style.display = "none";
+                        document.getElementById("mat_add").style.display = "none";
+                        document.getElementById("mat_edit").style.display = "none";
                     }
                     else if(role == "Admin")
                     {
                         document.getElementById("um").style.display = "block";
+                        document.getElementById("pro").style.display = "block";
                     }
                 }
             });

@@ -20,6 +20,12 @@
     <!---jquery dependency--->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <style>
+      .employee {
+        display: none;
+      }
+    </style>
+
     </head>
 
     <body>
@@ -58,7 +64,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="#">
+                      <a id="pro" class="nav-link active" href="products.html" style="display: none;">
                           <span data-feather="home"></span>
                           Products <span class="sr-only">(current)</span>
                       </a>
@@ -88,14 +94,36 @@
 
 
       <div style="padding-left: 300px; padding-top: 25px;">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
-          Add Product
-        </button>
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="margin-bottom: 10px;">
-          Edit Product
-        </button>
-        <button type="button" class="btn btn-dark" id="clear" style="margin-bottom: 10px;">
-          Clear Selection
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="height: 40px; width: 150px;">
+              Add Product
+            </button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="height: 40px; width: 150px; margin: 10px;">
+              Edit Product
+            </button>
+            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px;">
+              Clear Selection
+            </button>
+        <form id="sort">
+          <div style="float: left;">
+          <select id="sortCate" class="form-control" style="width: 150px; margin-right: 5px;">
+            <option value="select">Select...</option>
+            <option value="name">Name</option>
+            <option value="id">ID</option>
+            <option value="category">Category</option>
+            <option value="quantity">Quantity</option>
+          </select>
+        </div>
+        <div style="float: left;">
+            <input type="text" id="query" class="form-control" placeholder="Search" aria-describedby="addon-wrapping" style="height: 40px; width: 150px; margin-left: 10px;">
+          </div>
+          <div style="float: left;">
+            <button type="button" class="btn btn-dark" id="filter" style="height: 40px; width: 150px; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">
+              Filter
+            </button>
+          </div>
+        </form>
+        <button type="button" class="btn btn-dark" id="clearFilter" style="height: 40px; width: 150px; margin-bottom: 10px;">
+          Clear Filter
         </button>
         
         <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -129,37 +157,37 @@
           </div>
         </div>
 
-        <!-- <div> -->
-        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form id="editProduct">
-                  <label for="ename" style="color: black;">Product Name</label>
-                  <input type="text" id="ename" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
-
-                  <label for="eID" style="color: black;">ID</label>
-                  <input type="text" id="eID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
-
-                  <label for="ecategory" style="color: black;">Category</label>
-                  <input type="text" id="ecategory" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
-
-                  <label for="equantity" style="color: black;">Quantity</label>
-                  <input type="text" id="equantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
-                  <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit</button>
-                  </div>
-                </form>
+        <div> 
+          <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="editProduct">
+                    <label for="ename" style="color: black;">Product Name</label>
+                    <input type="text" id="ename" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+  
+                    <label for="eID" style="color: black;">ID</label>
+                    <input type="text" id="eID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+  
+                    <label for="ecategory" style="color: black;">Category</label>
+                    <input type="text" id="ecategory" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+  
+                    <label for="equantity" style="color: black;">Quantity</label>
+                    <input type="text" id="equantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+                    <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit</button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
         <table id="products" class="table table-light table-hover">
         <thead>
