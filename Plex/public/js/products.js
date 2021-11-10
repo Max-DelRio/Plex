@@ -101,6 +101,23 @@ db.collection("Products").get().then((querySnapshot) => {
                 }
             }
 
+            var txt = clone.querySelectorAll("input");
+            button[0].onclick = function() {
+                var choice = confirm("Do you want to update the quantity?");
+                if(choice){
+                    wait();
+                    async function wait(){
+                        const new_quan = txt[0].value
+                        const update_ref = db.collection("Products").doc(id);
+                        const res = await Promise.resolve(update_ref.update({quantity: new_quan}));
+                        location.reload();
+                    }
+                }
+                else{
+                    location.reload();
+                }
+            }
+
             tbody.appendChild(clone);
         }
         count++;

@@ -88,25 +88,25 @@
 
       <div style="margin-left: 300px; margin-top: 25px;">
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
-          Add Product
+          Add Material
         </button>
         
         <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
+                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Material</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <form id="addMaterial">
-                  <label for="name" style="color: black;">Product Name</label>
-                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+                  <label for="name" style="color: black;">Material Name</label>
+                  <input type="text" id="name" class="form-control" placeholder="Material Name" aria-describedby="addon-wrapping">
 
                   <label for="ID" style="color: black;">ID</label>
-                  <input type="text" id="last" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
 
                   <label for="supplier" style="color: black;">Supplier</label>
                   <input type="text" id="supplier" class="form-control" placeholder="Supplier" aria-describedby="addon-wrapping">
@@ -162,7 +162,7 @@
               </tr>
             </thead>
             <tbody id="table">
-                <tr>
+                <!-- <tr>
                     <td>1</td>
                     <td>test</td>
                     <td>test</td>
@@ -182,7 +182,7 @@
                             </form>
                         </td>
                     <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>
-                </tr>
+                </tr> -->
             </tbody>
             </table>
         </div>
@@ -190,21 +190,21 @@
         <template id="materialRow">
         <tr>
           <tr>
-            <td>1</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
                 <td>
                     <form>
-                        <input class="form-control" type="text" style="width: 50px; height: 30px;">
+                        <input id="update_quantity" class="form-control" type="text" style="width: 50px; height: 30px;">
                         <td><button class="btn btn-dark d-flex justify-content-center" type="submit" style="height: 30px; align-items: center;">Save</button></td>
                     </form>
                 </td>
@@ -227,6 +227,7 @@
     
     <script type="module" src="./js/admin.js"></script>
     <script type="module" src="./js/signout.js"></script>
+    <script type="module" src="./js/material.js"></script>
     
     </body>
 
