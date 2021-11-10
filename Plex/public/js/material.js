@@ -66,12 +66,12 @@ function queryDB(){
                 var button = clone.querySelectorAll("button");
                 // var txt = clone.querySelectorAll("input");
                 var txt = clone.querySelector("input");
-                if(userRole == "Employee"){
-                    td[15].style.display = "none";
-                }
-                else if(userRole == "Admin"){
-                    td[15].style.display = "block";
-                }
+                // if(userRole == "Employee"){
+                //     td[15].style.display = "none";
+                // }
+                // else if(userRole == "Admin"){
+                //     td[15].style.display = "block";
+                // }
                 button[0].onclick = function() {
                     var choice = confirm("Do you want to update the quantity?");
                     if(choice){
@@ -225,12 +225,12 @@ document.querySelector("#filter").addEventListener("click", function table(e){
                 var button = clone.querySelectorAll("button");
                 // var txt = clone.querySelectorAll("input");
                 var txt = clone.querySelector("input");
-                if(userRole == "Employee"){
-                    td[11].style.display = "none";
-                }
-                else if(userRole == "Admin"){
-                    td[15].style.display = "block";
-                }
+                // if(userRole == "Employee"){
+                //     td[11].style.display = "none";
+                // }
+                // else if(userRole == "Admin"){
+                //     td[15].style.display = "block";
+                // }
                 button[0].onclick = function() {
                     var choice = confirm("Do you want to update the quantity?");
                     if(choice){

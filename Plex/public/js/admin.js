@@ -32,6 +32,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     {
                         document.getElementById("um").style.display = "none";
                         document.getElementById("pro").style.display = "none";
+                        document.getElementById("mat").style.display = "none";
                         document.getElementById("mat_add").style.display = "none";
                         document.getElementById("mat_edit").style.display = "none";
                     }
@@ -39,6 +40,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     {
                         document.getElementById("um").style.display = "block";
                         document.getElementById("pro").style.display = "block";
+                        document.getElementById("mat").style.display = "block";
                     }
                 }
             });
