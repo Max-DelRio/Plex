@@ -17,7 +17,6 @@ const db = firebase.firestore();
 var count = 1;
 var edit;
 var row;
-var userRole;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     auth.onAuthStateChanged((user) => {
@@ -38,10 +37,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function queryDB(){
-    db.collection("Products").get().then((querySnapshot) => {
+    db.collection("Tracking").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const id = doc.id;
-            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().category, doc.data().quantity);
+            console.log(doc.id, " => ", doc.data().orderno, doc.data().product, doc.data().status);
             if('content' in document.createElement('template')) {
                 var tbody = document.querySelector("#table");
                 var template = document.querySelector("#productRow");
@@ -49,61 +48,25 @@ function queryDB(){
                 var tr = clone.querySelector("tr");
                 var td = clone.querySelectorAll("td");
                 td[0].textContent = count;
-                td[1].textContent = doc.data().name;
-                td[2].textContent = doc.data().id;
-                td[3].textContent = doc.data().category;
-                td[4].textContent = doc.data().quantity;
+                td[1].textContent = doc.data().orderno;
+                td[2].textContent = doc.data().product;
+                td[3].textContent = doc.data().station;
+                td[4].textContent = doc.data().status;
                 td[5].textContent = id;
-                var button = clone.querySelectorAll("button");
-                var input = clone.querySelector("input");
-                if(userRole == "Employee"){
-                    td[8].style.display = "none";
-                }
-                else if(userRole == "Admin"){
-                    td[8].style.display = "block";
-                }
-                button[0].onclick = function() {
-                    var choice = confirm("Do you want to update the quantity?");
-                    if(choice){
-                        wait();
-                        async function wait(){
-                            const newQuantity = input.value;
-                            const res = await Promise.resolve(db.collection("Products").doc(id).update({quantity: newQuantity}));
-                            location.reload();
-                        }
-                    }
-                    else{
-                        location.reload();
-                    }
-                }
-                button[1].onclick = function() {
-                    var choice = confirm("Do you want to delete this product?");
-                    if(choice){
-                        wait();
-                        async function wait(){
-                            let result = await Promise.resolve(db.collection("Products").doc(id).delete());
-                            location.reload();
-                        }
-                    }
-                    else{
-                        location.reload();
-                    }
-                }
     
                 tbody.appendChild(clone);
             }
             count++;
         });
-        var table = document.getElementById("products");
+        var table = document.getElementById("trackingt");
         var rows = table.querySelectorAll("tr");
         for(var i = 1; i < rows.length; i++){
             rows[i].onclick = function(){
                 row = this;
+                console.log(row);
                 $(this).css("background-color", "#eaeaeb");
-                document.getElementById("ename").value = this.cells[1].innerHTML;
-                document.getElementById("eID").value = this.cells[2].innerHTML;
-                document.getElementById("ecategory").value = this.cells[3].innerHTML;
-                document.getElementById("equantity").value = this.cells[4].innerHTML;
+                document.getElementById("orderno").value = this.cells[1].innerHTML;
+                document.getElementById("product").value = this.cells[2].innerHTML;
                 edit = this.cells[5].innerHTML;
             }
         }
@@ -141,10 +104,7 @@ document.querySelector("#editProduct").addEventListener("submit", function EditP
 
 document.querySelector("#clear").onclick = function(){
     $(row).css("background-color", "#fdfdfe");
-    document.getElementById("ename").value = "";
-    document.getElementById("eID").value = "";
-    document.getElementById("ecategory").value = "";
-    document.getElementById("equantity").value = "";
+    console.log(row);
     edit = "";
 };
 
@@ -171,44 +131,7 @@ document.querySelector("#filter").addEventListener("click", function table(e){
                 td[0].textContent = count;
                 td[1].textContent = doc.data().name;
                 td[2].textContent = doc.data().id;
-                td[3].textContent = doc.data().category;
-                td[4].textContent = doc.data().quantity;
-                td[5].textContent = id;
-                var button = clone.querySelectorAll("button");
-                var input = clone.querySelector("input");
-                if(userRole == "Employee"){
-                    td[8].style.display = "none";
-                }
-                else if(userRole == "Admin"){
-                    td[8].style.display = "block";
-                }
-                button[0].onclick = function() {
-                    var choice = confirm("Do you want to update the quantity?");
-                    if(choice){
-                        wait();
-                        async function wait(){
-                            const newQuantity = input.value;
-                            const res = await Promise.resolve(db.collection("Products").doc(id).update({quantity: newQuantity}));
-                            location.reload();
-                        }
-                    }
-                    else{
-                        location.reload();
-                    }
-                }
-                button[1].onclick = function() {
-                    var choice = confirm("Do you want to delete this product?");
-                    if(choice){
-                        wait();
-                        async function wait(){
-                            let result = await Promise.resolve(db.collection("Products").doc(id).delete());
-                            location.reload();
-                        }
-                    }
-                    else{
-                        location.reload();
-                    }
-                }
+                td[3].textContent = id;
     
                 tbody.appendChild(clone);
             }
@@ -222,9 +145,7 @@ document.querySelector("#filter").addEventListener("click", function table(e){
                 $(this).css("background-color", "#eaeaeb");
                 document.getElementById("ename").value = this.cells[1].innerHTML;
                 document.getElementById("eID").value = this.cells[2].innerHTML;
-                document.getElementById("ecategory").value = this.cells[3].innerHTML;
-                document.getElementById("equantity").value = this.cells[4].innerHTML;
-                edit = this.cells[5].innerHTML;
+                edit = this.cells[3].innerHTML;
             }
         }
     });

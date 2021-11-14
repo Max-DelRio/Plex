@@ -64,17 +64,17 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                      <a id="pro" class="nav-link active" href="products.html" style="display: none;">
+                      <a id="pro" class="nav-link" href="products.html" style="display: none;">
                           <span data-feather="home"></span>
-                          Products <span class="sr-only">(current)</span>
+                          Products 
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="users"></span>
-                        Tracking
-                      </a>
-                    </li>
+                        <a id="tra" class="nav-link active" href="tracking.html">
+                            <span data-feather="home"></span>
+                            Tracking <span class="sr-only">(current)</span>
+                        </a>
+                      </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">
                         <span data-feather="layers"></span>
@@ -94,13 +94,13 @@
 
 
       <div style="padding-left: 300px; padding-top: 25px;">
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="height: 40px; width: 150px;">
-              Add Product
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#signin" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
+              Order Sign In
             </button>
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="height: 40px; width: 150px; margin: 10px;">
-              Edit Product
-            </button>
-            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px;">
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#signout" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
+                Order Sign Out
+              </button>
+            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px; margin-bottom: 10px;">
               Clear Selection
             </button>
         <form id="sort">
@@ -125,61 +125,39 @@
         <button type="button" class="btn btn-dark" id="clearFilter" style="height: 40px; width: 150px; margin-bottom: 10px;">
           Clear Filter
         </button>
-        
-        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form id="addProduct">
-                  <label for="name" style="color: black;">Product Name</label>
-                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
-
-                  <label for="ID" style="color: black;">ID</label>
-                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
-
-                  <label for="category" style="color: black;">Category</label>
-                  <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
-
-                  <label for="quantity" style="color: black;">Quantity</label>
-                  <input type="text" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
-                  <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Add</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div> 
-          <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
+                  <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Order Sign In</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
                   <form id="editProduct">
-                    <label for="ename" style="color: black;">Product Name</label>
-                    <input type="text" id="ename" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+                    <label for="orderno" style="color: black;">Order No.</label>
+                    <input type="text" id="orderno" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" readonly>
   
-                    <label for="eID" style="color: black;">ID</label>
-                    <input type="text" id="eID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+                    <label for="product" style="color: black;">Product</label>
+                    <input type="text" id="product" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" readonly>
   
-                    <label for="ecategory" style="color: black;">Category</label>
-                    <input type="text" id="ecategory" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+                    <label for="status" style="color: black;">Status</label>
+                    <select id="status" class="form-control">
+                        <option value="recieved">recieved</option>
+                        <option value="processing">processing</option>
+                        <option value="sent">sent out</option>
+                      </select>
   
-                    <label for="equantity" style="color: black;">Quantity</label>
-                    <input type="text" id="equantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+                    <label for="instation" style="color: black;">Station</label>
+                    <select id="instation" class="form-control">
+                        <option value="CNC">CNC</option>
+                        <option value="Sanding">Sanding</option>
+                        <option value="Polishing">Polishing</option>
+                        <option value="Finished Goods">Finished Goods</option>
+                      </select>
                     <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit</button>
                     </div>
@@ -189,14 +167,55 @@
             </div>
           </div>
 
-        <table id="products" class="table table-light table-hover">
+          <div> 
+            <div class="modal fade" id="signout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Order Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="editProduct">
+                      <label for="orderno" style="color: black;">Order No.</label>
+                      <input type="text" id="orderno" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" readonly>
+    
+                      <label for="product" style="color: black;">Product</label>
+                      <input type="text" id="product" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" readonly>
+    
+                      <label for="status" style="color: black;">Status</label>
+                      <select id="status" class="form-control">
+                          <option value="recieved">recieved</option>
+                          <option value="processing">processing</option>
+                          <option value="sent">sent out</option>
+                        </select>
+    
+                      <label for="instation" style="color: black;">Station</label>
+                      <select id="instation" class="form-control">
+                          <option value="CNC">CNC</option>
+                          <option value="Sanding">Sanding</option>
+                          <option value="Polishing">Polishing</option>
+                          <option value="Finished Goods">Finished Goods</option>
+                        </select>
+                      <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        <table id="trackingt" class="table table-light table-hover">
         <thead>
             <tr>
             <th scope="col"></th>
-            <th scope="col">Name</th>
-            <th scope="col">ID</th>
-            <th scope="col">Category</th>
-            <th scope="col">Quantity</th>
+            <th scope="col">Order No.</th>
+            <th scope="col">Product</th>
+            <th scope="col">Station</th>
+            <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody id="table">
@@ -212,13 +231,6 @@
             <td></td>
             <td></td>
             <td style="display: none;"></td>
-                <td>
-                    <form>
-                        <input class="form-control" type="text" style="width: 50px; height: 30px;" required>
-                        <td><button class="btn btn-dark d-flex justify-content-center" type="submit" onsubmit="editQuantity()" style="height: 30px; align-items: center;">Save</button></td>
-                    </form>
-                </td>
-            <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>
         </tr>
         </template>
     
@@ -237,7 +249,7 @@
     
     <script type="module" src="./js/admin.js"></script>
     <script type="module" src="./js/signout.js"></script>
-    <script type="module" src="./js/products.js"></script>
+    <script type="module" src="./js/tracking.js"></script>
     
     </body>
 
