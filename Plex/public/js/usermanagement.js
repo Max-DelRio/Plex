@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
   apiKey: "AIzaSyBuEr3fsBnIi0TtGkQKNghven49vzcV6CY",
   authDomain: "plex-inventory-sytem.firebaseapp.com",
