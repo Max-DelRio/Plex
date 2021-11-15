@@ -140,6 +140,7 @@ document.querySelector("#editProduct").addEventListener("submit", function EditP
 });
 
 document.querySelector("#clear").onclick = function(){
+    console.log(row);
     $(row).css("background-color", "#fdfdfe");
     document.getElementById("ename").value = "";
     document.getElementById("eID").value = "";

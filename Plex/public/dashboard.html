@@ -20,6 +20,12 @@
     <!---jquery dependency--->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <style>
+      li{
+        color: black;
+      }
+    </style>
+
     </head>
 
     <body>
@@ -84,6 +90,62 @@
                   </ul>
                 </div>
               </nav>
+
+              <div style="padding-left: 295px; padding-top: 25px;">
+                <div class="row">
+                  <div class="col">
+                    <div class="card" style="width: 25rem;">
+                      <div class="card-body">
+                        <h5 class="card-title" style="color: black;">Out of Stock Materials</h5>
+                        <p class="card-text" style="color: black;">
+                          <ul id="outOfStock" class="list-group">
+                          <li class="list-group-item list-group-item-danger">Material Name, Quantity: 100</li>
+                        </ul></p>
+                        <a href="materials.html" class="card-link">Materials</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="card" style="width: 25rem;">
+                      <div class="card-body">
+                        <h5 class="card-title" style="color: black;">Low Stock Materials</h5>
+                        <p class="card-text" style="color: black;">
+                          <ul id="lowStock" class="list-group">
+                          <li class="list-group-item list-group-item-warning">Material Name, Quantity: 100</li>
+                        </ul></p>
+                        <a href="materials.html" class="card-link">Materials</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="card" style="width: 25rem;">
+                      <div class="card-body">
+                        <h5 class="card-title" style="color: black;">Low Stock but Ordered Materials</h5>
+                        <p class="card-text" style="color: black;">
+                          <ul id="orderedStock" class="list-group">
+                          <li class="list-group-item list-group-item-success">Material Name, Quantity: 100</li>
+                        </ul></p>
+                        <a href="materials.html" class="card-link">Materials</a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+                
+              </div>
+
+              <template id="outStockLi">
+                <li class="list-group-item list-group-item-danger"></li>
+              </template>
+
+              <template id="lowStockLi">
+                <li class="list-group-item list-group-item-warning"></li>
+              </template>
+
+              <template id="orderedStockLi">
+                <li class="list-group-item list-group-item-sucess"></li>
+              </template>
     
     <!---bootstrap dependency--->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
