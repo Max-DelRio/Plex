@@ -70,8 +70,8 @@ function queryDB(){
                         
                         wait2();
                         async function wait2(){
-                            const select = document.getElementById("fstatus");
-                            const newstatus = select.value;
+                            //const select = document.getElementById("fstatus");
+                            const newstatus = 'Finished';
                             const res = await Promise.resolve(db.collection("Tracking").doc(id).update({status: newstatus}));
                             location.reload();
                         }
