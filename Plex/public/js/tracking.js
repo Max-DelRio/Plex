@@ -63,11 +63,13 @@ function queryDB(){
                 td[5].textContent = id;
                 var button = clone.querySelectorAll("button");
                 tbody.appendChild(clone);
+                var docRef = db.collection("Users").doc(uid);
                 button[0].onclick = function() {
-                    var choice = confirm("Do you want to the status to finished?");
+                    var choice = confirm("Do you want to change the status to finished?");
                     if(choice){
-                        wait();
-                        async function wait(){
+                        
+                        wait2();
+                        async function wait2(){
                             const select = document.getElementById("fstatus");
                             const newstatus = select.value;
                             const res = await Promise.resolve(db.collection("Tracking").doc(id).update({status: newstatus}));
@@ -183,7 +185,17 @@ document.querySelector("#addOrder").addEventListener("submit", function AddOrder
     const select2 = document.getElementById("ainstation");
     const station = select2.value;
 
-
+    var docRef = db.collection("Users").doc(uid);
+    docRef.get().then((doc) => {
+        if(doc.exists){
+            console.log(doc.data().first + doc.data().last);
+            const logString = doc.data().first + " " + doc.data().last + " created " + orderno + " (" + product + ") at station: " + station + ", with status: " + status +"." 
+            wait();
+            async function wait(){
+                let result = await Promise.resolve(db.collection("Log").add({log: logString}));
+            }
+        }
+    });
      wait2();
      async function wait2(){
          let result = await Promise.resolve(db.collection("Tracking").add({orderno: orderno, product: product, station: station, status: status}));
