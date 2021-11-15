@@ -159,6 +159,31 @@ document.querySelector("#cFilter").addEventListener("click", function table(e){
     queryDB();
 });
 
+document.querySelector("#addOrder").addEventListener("submit", function AddOrder(e) {
+    e.preventDefault();
+    const orderno = document.getElementById("aorderno").value;
+    const product = document.getElementById("aproduct").value;
+    const select = document.getElementById("astatus");
+    const status = select.value;
+    const select2 = document.getElementById("ainstation");
+    const station = select2.value;
 
+
+     wait2();
+     async function wait2(){
+         let result = await Promise.resolve(db.collection("Tracking").add({orderno: orderno, product: product, station: station, status: status}));
+         location.reload();
+     }
+    //  docRef.get().then((doc) => {
+    //     if(doc.exists){
+    //         console.log(doc.data().first + doc.data().last);
+    //         const logString = doc.data().first + " " + doc.data().last + " signed off on " + orderno + " (" + product + ") at station: " + station + ", with status: " + status +"." 
+    //         wait();
+    //         async function wait(){
+    //             let result = await Promise.resolve(db.collection("Log").add({log: logString}));
+    //         }
+    //     }
+    // });
+});
 
 
