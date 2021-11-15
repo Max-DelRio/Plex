@@ -61,8 +61,23 @@ function queryDB(){
                 td[3].textContent = doc.data().station;
                 td[4].textContent = doc.data().status;
                 td[5].textContent = id;
-    
+                var button = clone.querySelectorAll("button");
                 tbody.appendChild(clone);
+                button[0].onclick = function() {
+                    var choice = confirm("Do you want to the status to finished?");
+                    if(choice){
+                        wait();
+                        async function wait(){
+                            const select = document.getElementById("fstatus");
+                            const newstatus = select.value;
+                            const res = await Promise.resolve(db.collection("Tracking").doc(id).update({status: newstatus}));
+                            location.reload();
+                        }
+                    }
+                    else{
+                        location.reload();
+                    }
+                }
             }
             count++;
         });
