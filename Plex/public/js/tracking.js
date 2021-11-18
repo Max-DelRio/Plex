@@ -67,10 +67,30 @@ function queryDB(){
                 button[0].onclick = function() {
                     var choice = confirm("Do you want to change the status to finished?");
                     if(choice){
+                        const orderno = document.getElementById("orderno").value;
+                        const product = document.getElementById("product").value;
+                        const select = document.getElementById("status");
+                        const status = select.value;
+                        const select2 = document.getElementById("instation");
+                        const station = select2.value;
+                        const newstatus = 'Finished';
                         
+                        var docRef = db.collection("Users").doc(uid);
+                        docRef.get().then((doc) => {
+                            if(doc.exists){
+                                console.log(doc.data().first + doc.data().last);
+                                var now = new Date();
+                                const logString = doc.data().first + " " + doc.data().last + " created " + orderno + " (" + product + ") at station: " + station + ", with status: " + newstatus +"." + now;
+                                wait();
+                                async function wait(){
+                                    let result = await Promise.resolve(db.collection("Log").add({log: logString}));
+                                }
+                            }
+                        });
                         wait2();
                         async function wait2(){
-                            //const select = document.getElementById("fstatus");
+                            // const select = document.getElementById("fstatus");
+                            // const newstatus = select.value;
                             const newstatus = 'Finished';
                             const res = await Promise.resolve(db.collection("Tracking").doc(id).update({status: newstatus}));
                             location.reload();
