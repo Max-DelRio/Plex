@@ -189,7 +189,8 @@ document.querySelector("#addOrder").addEventListener("submit", function AddOrder
     docRef.get().then((doc) => {
         if(doc.exists){
             console.log(doc.data().first + doc.data().last);
-            const logString = doc.data().first + " " + doc.data().last + " created " + orderno + " (" + product + ") at station: " + station + ", with status: " + status +"." 
+            var now = new Date();
+            const logString = doc.data().first + " " + doc.data().last + " created " + orderno + " (" + product + ") at station: " + station + ", with status: " + status +"." + now;
             wait();
             async function wait(){
                 let result = await Promise.resolve(db.collection("Log").add({log: logString}));
