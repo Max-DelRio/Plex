@@ -4,7 +4,7 @@
   <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" ="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
     <!---title--->
@@ -20,9 +20,15 @@
     <!---jquery dependency--->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    <style>
+    <!-- <style>
       li{
         color: black;
+      }
+    </style> -->
+
+    <style>
+      .employee {
+        display: none;
       }
     </style>
 
@@ -87,6 +93,12 @@
                         User Management
                       </a>
                     </li>
+                    <li class="nav-item">
+                      <a id="log" class="nav-link" href="log.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        Log
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </nav>
@@ -99,7 +111,27 @@
                         <h5 class="card-title" style="color: black;">Out of Stock Materials</h5>
                         <p class="card-text" style="color: black;">
                           <ul id="outOfStock" class="list-group">
-                          <li class="list-group-item list-group-item-danger">Material Name, Quantity: 100</li>
+                          <li class="list-group-item list-group-item-danger">
+                            <table id="materials" class="table table-light table-hover" >
+                              <thead>
+                                <tr>
+                                <!-- <th scope="col"></th> -->
+                                <th scope="col">Material</th>
+                                <th scope="col">Quantity</th>
+                                </tr>
+                              </thead>
+                              <tbody id="oostable">
+                              </tbody>
+                            </table>
+                            <template id="outOfStockM">
+                              <tr>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
+                            </template>
+
+
+                          </li>
                         </ul></p>
                         <a href="materials.html" class="card-link">Materials</a>
                       </div>
@@ -112,7 +144,25 @@
                         <h5 class="card-title" style="color: black;">Low Stock Materials</h5>
                         <p class="card-text" style="color: black;">
                           <ul id="lowStock" class="list-group">
-                          <li class="list-group-item list-group-item-warning">Material Name, Quantity: 100</li>
+                          <li class="list-group-item list-group-item-warning">
+                            <table id="materials" class="table table-light table-hover" >
+                              <thead>
+                                <tr>
+                                <!-- <th scope="col"></th> -->
+                                <th scope="col">Material</th>
+                                <th scope="col">Quantity</th>
+                                </tr>
+                              </thead>
+                              <tbody id="lstable">
+                              </tbody>
+                            </table>
+                            <template id="lowStockM">
+                              <tr>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
+                            </template>
+                          </li>
                         </ul></p>
                         <a href="materials.html" class="card-link">Materials</a>
                       </div>
@@ -125,7 +175,30 @@
                         <h5 class="card-title" style="color: black;">Low Stock but Ordered Materials</h5>
                         <p class="card-text" style="color: black;">
                           <ul id="orderedStock" class="list-group">
-                          <li class="list-group-item list-group-item-success">Material Name, Quantity: 100</li>
+                          <li class="list-group-item list-group-item-success">
+                            <table id="materials" class="table table-light table-hover" >
+                              <thead>
+                                <tr>
+                                <!-- <th scope="col"></th> -->
+                                <th scope="col">Material</th>
+                                <th scope="col">Quantity</th>
+                                </tr>
+                              </thead>
+                              <tbody id="orderedtable">
+                              </tbody>
+                            </table>
+                            <template id="orderedStockM">
+                              <tr>
+                                  <td></td>
+                                  <td></td>
+                              </tr>
+                            </template>
+
+                            
+
+
+                            
+                          </li>
                         </ul></p>
                         <a href="materials.html" class="card-link">Materials</a>
                       </div>
@@ -162,6 +235,7 @@
     
     <script type="module" src="./js/admin.js"></script>
     <script type="module" src="./js/signout.js"></script>
+    <script type="module" src="./js/dashboard.js"></script>
     
     </body>
 
