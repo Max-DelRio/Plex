@@ -15,9 +15,6 @@ const firebaseConfig = {
 const auth = firebase.auth();
 const db = firebase.firestore();
 var count = 1;
-var edit;
-var row;
-var userRole;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     auth.onAuthStateChanged((user) => {

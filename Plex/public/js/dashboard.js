@@ -15,9 +15,6 @@ const firebaseConfig = {
 const auth = firebase.auth();
 const db = firebase.firestore();
 var count = 1;
-var edit;
-var row;
-var userRole;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     auth.onAuthStateChanged((user) => {
@@ -49,38 +46,32 @@ function queryDB(){
                     var template = document.querySelector("#outOfStockM");
                     var clone = template.content.cloneNode(true);
                     var tr = clone.querySelector("tr");
-                    // tr.id = doc.id;
                     var td = clone.querySelectorAll("td");
-                    // td[0].textContent = count;
                     td[0].textContent = doc.data().name;
-                    td[1].textContent = doc.data().quantity;
+                    td[1].textContent = doc.data().estimated;
                 
                     tbody.appendChild(clone);
                 }
-                if(doc.data().quantity < 50 && doc.data().quantity != 0) {
+                else if(doc.data().quantity <= 20 && doc.data().estimated == "") {
                     var tbody = document.querySelector("#lstable");
                     var template = document.querySelector("#lowStockM");
                     var clone = template.content.cloneNode(true);
                     var tr = clone.querySelector("tr");
-                    // tr.id = doc.id;
                     var td = clone.querySelectorAll("td");
-                    // td[0].textContent = count;
                     td[0].textContent = doc.data().name;
                     td[1].textContent = doc.data().quantity;
                 
                     tbody.appendChild(clone);
                 }
-
-                if(doc.data().quantity < 50 && doc.data().quantity != 0) {
+                else if(doc.data().quantity <= 20 && doc.data().estimated != "" ) {
                     var tbody = document.querySelector("#orderedtable");
                     var template = document.querySelector("#orderedStockM");
                     var clone = template.content.cloneNode(true);
                     var tr = clone.querySelector("tr");
-                    // tr.id = doc.id;
                     var td = clone.querySelectorAll("td");
-                    // td[0].textContent = count;
                     td[0].textContent = doc.data().name;
                     td[1].textContent = doc.data().quantity;
+                    td[2].textContent = doc.data().estimated;
                 
                     tbody.appendChild(clone);
                 }
