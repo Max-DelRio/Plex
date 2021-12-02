@@ -137,9 +137,11 @@ document.querySelector("#addMaterial").addEventListener("submit", function AddMa
         const thickness = document.getElementById("thickness").value;
         const size = document.getElementById("size").value;
         const Description = document.getElementById("description").value;
-        const Quantity = document.getElementById("quantity").value;
+        // const Quantity = document.getElementById("quantity").value;
+        let Quantity = Number(document.getElementById("quantity").value);
         const totalPrice = document.getElementById("totalPrice").value;
         const estimated = document.getElementById("estimated").value;
+        // let estimated = new Date(document.getElementById("estimated").value);
         const shipping = document.getElementById("shipping").value;
         const Location = document.getElementById("location").value;
         
@@ -159,9 +161,11 @@ document.querySelector("#editMaterial").addEventListener("submit", function Edit
     const thickness = document.getElementById("ethickness").value;
     const size = document.getElementById("esize").value;
     const Description = document.getElementById("edescription").value;
-    const Quantity = document.getElementById("equantity").value;
+    // const Quantity = document.getElementById("equantity").value;
+    let Quantity = Number(document.getElementById("equantity").value);
     const totalPrice = document.getElementById("etotalPrice").value;
     const estimated = document.getElementById("eestimated").value;
+    // let estimated = new Date(document.getElementById("eestimated").value);
     const shipping = document.getElementById("eshipping").value;
     const Location = document.getElementById("elocation").value;
     wait();
