@@ -37,11 +37,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function queryDB(){
-    db.collection("Log").get().then((querySnapshot) => {
+    db.collection("Log").orderBy("timestamp", "desc").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const id = doc.id;
-            console.log(doc.id, " => ", doc.data().log, );
+            console.log(doc.id, " => ", doc.data().log, doc.data().timestamp,);
             // Name	ID	Supplier	Thickness	Size	Description	Quantity	Total Price	Est. Delivery Date	Shipping Method	Location
+            let date = new Date(doc.data().timestamp);
+            let [year, month, day, hour, minutes] = [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes()];
+            let dateString = date.toDateString();
+            let localeString = date.toLocaleString();
             if('content' in document.createElement('template')) {
                 var tbody = document.querySelector("#logT");
                 var template = document.querySelector("#logRow");
@@ -50,6 +54,9 @@ function queryDB(){
                 var td = clone.querySelectorAll("td");
                 td[0].textContent = count;
                 td[1].textContent = doc.data().log;
+                // td[2].textContent = year+"-"+month+"-"+day+" " + hour + ":" + minutes;
+                // td[2].textContent = dateString + " " + hour +":" + minutes;
+                td[2].textContent = localeString;
 
                 tbody.appendChild(clone);
             }
