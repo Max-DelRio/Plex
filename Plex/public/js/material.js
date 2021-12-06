@@ -41,7 +41,7 @@ function queryDB(){
     db.collection("Materials").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const id = doc.id;
-            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().supplier,  doc.data().thickness,  doc.data().size, doc.data().description, doc.data().quantity, doc.data().totalprice, doc.data().estimated, doc.data().shipping, doc.data().location);
+            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().supplier,  doc.data().thickness,  doc.data().size, doc.data().description, doc.data().quantity, doc.data().restock, doc.data().totalprice, doc.data().estimated, doc.data().shipping, doc.data().location);
             // Name	ID	Supplier	Thickness	Size	Description	Quantity	Total Price	Est. Delivery Date	Shipping Method	Location
             if('content' in document.createElement('template')) {
                 var tbody = document.querySelector("#table");
@@ -58,11 +58,12 @@ function queryDB(){
                 td[5].textContent = doc.data().size;
                 td[6].textContent = doc.data().description;
                 td[7].textContent = doc.data().quantity;
-                td[8].textContent = doc.data().totalprice;
-                td[9].textContent = doc.data().estimated;
-                td[10].textContent = doc.data().shipping;
-                td[11].textContent = doc.data().location;
-                td[12].textContent = id;
+                td[8].textContent = doc.data().restock;
+                td[9].textContent = doc.data().totalprice;
+                td[10].textContent = doc.data().estimated;
+                td[11].textContent = doc.data().shipping;
+                td[12].textContent = doc.data().location;
+                td[13].textContent = id;
                 var button = clone.querySelectorAll("button");
                 // var txt = clone.querySelectorAll("input");
                 var txt = clone.querySelector("input");
@@ -119,11 +120,12 @@ function queryDB(){
                 document.getElementById("esize").value = this.cells[5].innerHTML;
                 document.getElementById("edescription").value = this.cells[6].innerHTML;
                 document.getElementById("equantity").value = this.cells[7].innerHTML;
-                document.getElementById("etotalPrice").value = this.cells[8].innerHTML;
-                document.getElementById("eestimated").value = this.cells[9].innerHTML;
-                document.getElementById("eshipping").value = this.cells[10].innerHTML;
-                document.getElementById("elocation").value = this.cells[11].innerHTML;
-                edit = this.cells[12].innerHTML;
+                document.getElementById("erestock").value = this.cells[8].innerHTML;
+                document.getElementById("etotalPrice").value = this.cells[9].innerHTML;
+                document.getElementById("eestimated").value = this.cells[10].innerHTML;
+                document.getElementById("eshipping").value = this.cells[11].innerHTML;
+                document.getElementById("elocation").value = this.cells[12].innerHTML;
+                edit = this.cells[13].innerHTML;
             }
         }
     });
@@ -137,9 +139,9 @@ document.querySelector("#addMaterial").addEventListener("submit", function AddMa
         const thickness = document.getElementById("thickness").value;
         const size = document.getElementById("size").value;
         const Description = document.getElementById("description").value;
-        // const Quantity = document.getElementById("quantity").value;
         let Quantity = Number(document.getElementById("quantity").value);
-        const totalPrice = document.getElementById("totalPrice").value;
+        let restock = Number(document.getElementById("restock").value);
+        let totalPrice = Number(document.getElementById("totalPrice").value);
         const estimated = document.getElementById("estimated").value;
         // let estimated = new Date(document.getElementById("estimated").value);
         const shipping = document.getElementById("shipping").value;
@@ -147,7 +149,7 @@ document.querySelector("#addMaterial").addEventListener("submit", function AddMa
         
         wait();
         async function wait(){
-            let result = await Promise.resolve(db.collection("Materials").add({name: name, id: ID, supplier: supplier, thickness: thickness, size: size, description: Description, quantity: Quantity, totalprice: totalPrice, estimated: estimated, shipping: shipping, location: Location}));
+            let result = await Promise.resolve(db.collection("Materials").add({name: name, id: ID, supplier: supplier, thickness: thickness, size: size, description: Description, quantity: Quantity, restock: restock, totalprice: totalPrice, estimated: estimated, shipping: shipping, location: Location}));
             location.reload();
         }
 });
@@ -161,16 +163,16 @@ document.querySelector("#editMaterial").addEventListener("submit", function Edit
     const thickness = document.getElementById("ethickness").value;
     const size = document.getElementById("esize").value;
     const Description = document.getElementById("edescription").value;
-    // const Quantity = document.getElementById("equantity").value;
     let Quantity = Number(document.getElementById("equantity").value);
-    const totalPrice = document.getElementById("etotalPrice").value;
+    let restock = Number(document.getElementById("erestock").value);
+    let totalPrice = Number(document.getElementById("etotalPrice").value);
     const estimated = document.getElementById("eestimated").value;
     // let estimated = new Date(document.getElementById("eestimated").value);
     const shipping = document.getElementById("eshipping").value;
     const Location = document.getElementById("elocation").value;
     wait();
     async function wait(){
-        const result = await Promise.resolve(db.collection("Materials").doc(edit).update({name: name, id: ID, supplier: supplier, thickness: thickness, size: size, description: Description, quantity: Quantity, totalprice: totalPrice, estimated: estimated, shipping: shipping, location: Location}));
+        const result = await Promise.resolve(db.collection("Materials").doc(edit).update({name: name, id: ID, supplier: supplier, thickness: thickness, size: size, description: Description, quantity: Quantity, restock: restock, totalprice: totalPrice, estimated: estimated, shipping: shipping, location: Location}));
         location.reload();
     }   
 });
@@ -184,6 +186,7 @@ document.querySelector("#clear").onclick = function(){
     document.getElementById("esize").value = "";
     document.getElementById("edescription").value = "";
     document.getElementById("equantity").value = "";
+    document.getElementById("erestock").value = "";
     document.getElementById("etotalPrice").value = "";
     document.getElementById("eestimated").value = "";
     document.getElementById("eshipping").value = "";
@@ -204,7 +207,7 @@ document.querySelector("#filter").addEventListener("click", function table(e){
     result.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const id = doc.id;
-            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().supplier,  doc.data().thickness,  doc.data().size, doc.data().description, doc.data().quantity, doc.data().totalprice, doc.data().estimated, doc.data().shipping, doc.data().location);
+            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().supplier,  doc.data().thickness,  doc.data().size, doc.data().description, doc.data().quantity, doc.data().restock, doc.data().totalprice, doc.data().estimated, doc.data().shipping, doc.data().location);
             // Name	ID	Supplier	Thickness	Size	Description	Quantity	Total Price	Est. Delivery Date	Shipping Method	Location
             if('content' in document.createElement('template')) {
                 var tbody = document.querySelector("#table");
@@ -221,11 +224,12 @@ document.querySelector("#filter").addEventListener("click", function table(e){
                 td[5].textContent = doc.data().size;
                 td[6].textContent = doc.data().description;
                 td[7].textContent = doc.data().quantity;
-                td[8].textContent = doc.data().totalprice;
-                td[9].textContent = doc.data().estimated;
-                td[10].textContent = doc.data().shipping;
-                td[11].textContent = doc.data().location;
-                td[12].textContent = id;
+                td[8].textContent = doc.data().restock;
+                td[9].textContent = doc.data().totalprice;
+                td[10].textContent = doc.data().estimated;
+                td[11].textContent = doc.data().shipping;
+                td[12].textContent = doc.data().location;
+                td[13].textContent = id;
                 var button = clone.querySelectorAll("button");
                 // var txt = clone.querySelectorAll("input");
                 var txt = clone.querySelector("input");
@@ -282,11 +286,12 @@ document.querySelector("#filter").addEventListener("click", function table(e){
                 document.getElementById("esize").value = this.cells[5].innerHTML;
                 document.getElementById("edescription").value = this.cells[6].innerHTML;
                 document.getElementById("equantity").value = this.cells[7].innerHTML;
-                document.getElementById("etotalPrice").value = this.cells[8].innerHTML;
-                document.getElementById("eestimated").value = this.cells[9].innerHTML;
-                document.getElementById("eshipping").value = this.cells[10].innerHTML;
-                document.getElementById("elocation").value = this.cells[11].innerHTML;
-                edit = this.cells[12].innerHTML;
+                document.getElementById("erestock").value = this.cells[8].innerHTML;
+                document.getElementById("etotalPrice").value = this.cells[9].innerHTML;
+                document.getElementById("eestimated").value = this.cells[10].innerHTML;
+                document.getElementById("eshipping").value = this.cells[11].innerHTML;
+                document.getElementById("elocation").value = this.cells[12].innerHTML;
+                edit = this.cells[13].innerHTML;
             }
         }
     });

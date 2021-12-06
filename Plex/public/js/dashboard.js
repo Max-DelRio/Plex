@@ -38,8 +38,9 @@ function queryDB(){
     db.collection("Materials").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const id = doc.id;
-            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().supplier,  doc.data().thickness,  doc.data().size, doc.data().description, doc.data().quantity, doc.data().totalprice, doc.data().estimated, doc.data().shipping, doc.data().location);
+            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().supplier,  doc.data().thickness,  doc.data().size, doc.data().description, doc.data().quantity, doc.data().restock, doc.data().totalprice, doc.data().estimated, doc.data().shipping, doc.data().location);
 
+            let restockValue = Number(doc.data().restock);
             if('content' in document.createElement('template')) {
                 if(doc.data().quantity == 0) {
                     var tbody = document.querySelector("#oostable");
@@ -52,7 +53,7 @@ function queryDB(){
                 
                     tbody.appendChild(clone);
                 }
-                else if(doc.data().quantity <= 20 && doc.data().estimated == "") {
+                else if(doc.data().quantity <= restockValue && doc.data().estimated == "") {
                     var tbody = document.querySelector("#lstable");
                     var template = document.querySelector("#lowStockM");
                     var clone = template.content.cloneNode(true);
@@ -63,7 +64,7 @@ function queryDB(){
                 
                     tbody.appendChild(clone);
                 }
-                else if(doc.data().quantity <= 20 && doc.data().estimated != "" ) {
+                else if(doc.data().quantity <= restockValue && doc.data().estimated != "" ) {
                     var tbody = document.querySelector("#orderedtable");
                     var template = document.querySelector("#orderedStockM");
                     var clone = template.content.cloneNode(true);

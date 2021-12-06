@@ -121,6 +121,7 @@
               <option value="size">Size</option>
               <option value="description">Description</option>
               <option value="quantity">Quantity</option>
+              <option value="restock">Restock Value</option>
               <option value="totalprice">Total rice</option>
               <option value="estimated">Estimated</option>
               <option value="shipping">Shipping</option>
@@ -172,8 +173,11 @@
                   <label for="Quantity" style="color: black;">Quantity</label>
                   <input type="number" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
 
+                  <label for="Restock" style="color: black;">Restock Value</label>
+                  <input type="number" id="restock" class="form-control" placeholder="Restock Value" aria-describedby="addon-wrapping">
+
                   <label for="totalPrice" style="color: black;">Total Price</label>
-                  <input type="text" id="totalPrice" class="form-control" placeholder="Total Price" aria-describedby="addon-wrapping">
+                  <input type="number" id="totalPrice" class="form-control" placeholder="Total Price" aria-describedby="addon-wrapping">
 
                   <label for="estimated" style="color: black;">Estimated Delivery Date</label>
                   <input type="date" id="estimated" class="form-control" placeholder="Estimated Delivery Date" aria-describedby="addon-wrapping">
@@ -224,9 +228,12 @@
                     
                     <label for="Quantity" style="color: black;">Quantity</label>
                     <input type="number" id="equantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+
+                    <label for="Restock" style="color: black;">Restock Value</label>
+                    <input type="number" id="erestock" class="form-control" placeholder="Restock Value" aria-describedby="addon-wrapping">
                     
                     <label for="totalPrice" style="color: black;">Total Price</label>
-                    <input type="text" id="etotalPrice" class="form-control" placeholder="Total Price" aria-describedby="addon-wrapping">
+                    <input type="number" id="etotalPrice" class="form-control" placeholder="Total Price" aria-describedby="addon-wrapping">
                     
                     <label for="estimated" style="color: black;">Estimated Delivery Date</label>
                     <input type="date" id="eestimated" class="form-control" placeholder="Estimated Delivery Date"
@@ -258,6 +265,7 @@
               <th scope="col">Size</th>
               <th scope="col">Description</th>
               <th scope="col">Quantity</th>
+              <th scope="col">Restock Value</th>
               <th scope="col">Total Price</th>
               <th scope="col">Est. Delivery Date</th>
               <th scope="col">Shipping Method</th>
@@ -272,6 +280,7 @@
         <template id="materialRow">
         <tr>
           <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
