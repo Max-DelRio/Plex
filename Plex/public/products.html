@@ -58,7 +58,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="materials.html">
+                        <a id="mat" class="nav-link" href="materials.html">
                             <span data-feather="home"></span>
                             Materials
                         </a>
@@ -70,15 +70,15 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="tracking.html">
                         <span data-feather="users"></span>
                         Tracking
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Settings
+                      <a id="log" class="nav-link" href="log.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        Log
                       </a>
                     </li>
                     <li class="nav-item">
@@ -138,13 +138,13 @@
               <div class="modal-body">
                 <form id="addProduct">
                   <label for="name" style="color: black;">Product Name</label>
-                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" required>
 
                   <label for="ID" style="color: black;">ID</label>
-                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" required>
 
                   <label for="category" style="color: black;">Category</label>
-                  <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+                  <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping" required>
 
                   <label for="quantity" style="color: black;">Quantity</label>
                   <input type="text" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
@@ -170,13 +170,13 @@
                 <div class="modal-body">
                   <form id="editProduct">
                     <label for="ename" style="color: black;">Product Name</label>
-                    <input type="text" id="ename" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+                    <input type="text" id="ename" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" required>
   
                     <label for="eID" style="color: black;">ID</label>
-                    <input type="text" id="eID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+                    <input type="text" id="eID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" required>
   
                     <label for="ecategory" style="color: black;">Category</label>
-                    <input type="text" id="ecategory" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+                    <input type="text" id="ecategory" class="form-control" placeholder="Category" aria-describedby="addon-wrapping" required>
   
                     <label for="equantity" style="color: black;">Quantity</label>
                     <input type="text" id="equantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">

@@ -58,7 +58,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="materials.html">
+                        <a id="mat" class="nav-link" href="materials.html" style="display: none;">
                             <span data-feather="home"></span>
                             Materials
                         </a>
@@ -75,12 +75,12 @@
                             Tracking <span class="sr-only">(current)</span>
                         </a>
                       </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Settings
-                      </a>
-                    </li>
+                      <li class="nav-item">
+                        <a id="log" class="nav-link" href="log.html" style="display: none;">
+                          <span data-feather="bar-chart-2"></span>
+                          Log
+                        </a>
+                      </li>
                     <li class="nav-item">
                       <a id="um" class="nav-link" href="usermanagement.html" style="display: none;">
                         <span data-feather="bar-chart-2"></span>
@@ -97,8 +97,11 @@
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#signoff" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
               Order Sign Off
             </button>
-            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px; margin-bottom: 10px;">
+            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
               Clear Selection
+            </button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
+              Add
             </button>
         <form id="sort">
           <div style="float: left;">
@@ -163,6 +166,47 @@
                 </div>
               </div>
             </div>
+            <div>  
+              <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Order</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="addOrder">
+                        <label for="aorderno" style="color: black;">Order No.</label>
+                        <input type="text" id="aorderno" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" required>
+      
+                        <label for="aproduct" style="color: black;">Product</label>
+                        <input type="text" id="aproduct" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" required>
+      
+                        
+                        <label for="astatus" style="color: black;">Status</label>
+                        <select id="astatus" class="form-control" required>
+                            <option value="recieved">recieved</option>
+                            <option value="processing">processing</option>
+                            <option value="sent">sent out</option>
+                          </select>
+                        <label for="ainstation" style="color: black;">Station</label>
+                        <select id="ainstation" class="form-control" required>
+                            <option value="CNC">CNC</option>
+                            <option value="Sanding">Sanding</option>
+                            <option value="Polishing">Polishing</option>
+                            <option value="Finished Goods">Finished Goods</option>
+                          </select>
+                          
+                        <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Create</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
         <table id="trackingt" class="table table-light table-hover">
         <thead>
@@ -187,6 +231,15 @@
             <td></td>
             <td></td>
             <td style="display: none;"></td>
+            <td>
+              <form>
+                <!-- <label for="fstatus" style="color: black;"></label>
+                <select id="fstatus" class="form-control">
+                    <option value="Finished">Finished</option>
+                  </select> -->
+                <td><button class="btn btn-dark d-flex justify-content-center" type="submit" onsubmit="editQuantity()" style="height: 30px; align-items: center;">Finish</button></td>
+            </form>
+          </td>
         </tr>
         </template>
     

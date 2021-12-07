@@ -61,8 +61,46 @@ function queryDB(){
                 td[3].textContent = doc.data().station;
                 td[4].textContent = doc.data().status;
                 td[5].textContent = id;
-    
+                var button = clone.querySelectorAll("button");
                 tbody.appendChild(clone);
+                var docRef = db.collection("Users").doc(uid);
+                button[0].onclick = function() {
+                    var choice = confirm("Do you want to change the status to finished?");
+                    if(choice){
+                        const orderno = document.getElementById("orderno").value;
+                        const product = document.getElementById("product").value;
+                        const select = document.getElementById("status");
+                        const status = select.value;
+                        const select2 = document.getElementById("instation");
+                        const station = select2.value;
+                        const newstatus = 'Finished';
+                        
+                        var docRef = db.collection("Users").doc(uid);
+                        docRef.get().then((doc) => {
+                            if(doc.exists){
+                                console.log(doc.data().first + doc.data().last);
+                                var now = new Date();
+                                const logString = doc.data().first + " " + doc.data().last + " created " + orderno + " (" + product + ") at station: " + station + ", with status: " + newstatus +"." + now;
+                                wait();
+                                async function wait(){
+                                    const time = Date.now();
+                                    let result = await Promise.resolve(db.collection("Log").add({log: logString, timestamp: time}));
+                                }
+                            }
+                        });
+                        wait2();
+                        async function wait2(){
+                            // const select = document.getElementById("fstatus");
+                            // const newstatus = select.value;
+                            const newstatus = 'Finished';
+                            const res = await Promise.resolve(db.collection("Tracking").doc(id).update({status: newstatus}));
+                            location.reload();
+                        }
+                    }
+                    else{
+                        location.reload();
+                    }
+                }
             }
             count++;
         });
@@ -92,10 +130,12 @@ document.querySelector("#signoff").addEventListener("submit", function SignOff(e
         docRef.get().then((doc) => {
             if(doc.exists){
                 console.log(doc.data().first + doc.data().last);
-                const logString = doc.data().first + " " + doc.data().last + " signed off on " + orderno + " (" + product + ") at station: " + station + ", with status: " + status +"." 
+                var now = new Date();
+                const logString = doc.data().first + " " + doc.data().last + " signed off on " + orderno + " (" + product + ") at station: " + station + ", with status: " + status + ". " + now; 
                 wait();
                 async function wait(){
-                    let result = await Promise.resolve(db.collection("Log").add({log: logString}));
+                    const time = Date.now();
+                    let result = await Promise.resolve(db.collection("Log").add({log: logString, timestamp: time}));
                 }
             }
         });
@@ -121,7 +161,7 @@ document.querySelector("#filter").addEventListener("click", function table(e){
     result.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             const id = doc.id;
-            console.log(doc.id, " => ", doc.data().name, doc.data().id, doc.data().category, doc.data().quantity);
+            console.log(doc.id, " => ", doc.data().orderno, doc.data().product, doc.data().status);
             if('content' in document.createElement('template')) {
                 var tbody = document.querySelector("#table");
                 var template = document.querySelector("#orderRow");
@@ -134,8 +174,46 @@ document.querySelector("#filter").addEventListener("click", function table(e){
                 td[3].textContent = doc.data().station;
                 td[4].textContent = doc.data().status;
                 td[5].textContent = id;
-    
+                var button = clone.querySelectorAll("button");
                 tbody.appendChild(clone);
+                var docRef = db.collection("Users").doc(uid);
+                button[0].onclick = function() {
+                    var choice = confirm("Do you want to change the status to finished?");
+                    if(choice){
+                        const orderno = document.getElementById("orderno").value;
+                        const product = document.getElementById("product").value;
+                        const select = document.getElementById("status");
+                        const status = select.value;
+                        const select2 = document.getElementById("instation");
+                        const station = select2.value;
+                        const newstatus = 'Finished';
+                        
+                        var docRef = db.collection("Users").doc(uid);
+                        docRef.get().then((doc) => {
+                            if(doc.exists){
+                                console.log(doc.data().first + doc.data().last);
+                                var now = new Date();
+                                const logString = doc.data().first + " " + doc.data().last + " created " + orderno + " (" + product + ") at station: " + station + ", with status: " + newstatus +"." + now;
+                                wait();
+                                async function wait(){
+                                    const time = Date.now();
+                                    let result = await Promise.resolve(db.collection("Log").add({log: logString, timestamp: time}));
+                                }
+                            }
+                        });
+                        wait2();
+                        async function wait2(){
+                            // const select = document.getElementById("fstatus");
+                            // const newstatus = select.value;
+                            const newstatus = 'Finished';
+                            const res = await Promise.resolve(db.collection("Tracking").doc(id).update({status: newstatus}));
+                            location.reload();
+                        }
+                    }
+                    else{
+                        location.reload();
+                    }
+                }
             }
             count++;
         });
@@ -157,6 +235,44 @@ document.querySelector("#cFilter").addEventListener("click", function table(e){
     e.preventDefault();
     document.getElementById("table").innerHTML="";
     queryDB();
+});
+
+document.querySelector("#addOrder").addEventListener("submit", function AddOrder(e) {
+    e.preventDefault();
+    const orderno = document.getElementById("aorderno").value;
+    const product = document.getElementById("aproduct").value;
+    const select = document.getElementById("astatus");
+    const status = select.value;
+    const select2 = document.getElementById("ainstation");
+    const station = select2.value;
+
+    var docRef = db.collection("Users").doc(uid);
+    docRef.get().then((doc) => {
+        if(doc.exists){
+            console.log(doc.data().first + doc.data().last);
+            var now = new Date();
+            const logString = doc.data().first + " " + doc.data().last + " created " + orderno + " (" + product + ") at station: " + station + ", with status: " + status +". " + now;
+            wait();
+            async function wait(){
+                let result = await Promise.resolve(db.collection("Log").add({log: logString}));
+            }
+        }
+    });
+     wait2();
+     async function wait2(){
+         let result = await Promise.resolve(db.collection("Tracking").add({orderno: orderno, product: product, station: station, status: status}));
+         location.reload();
+     }
+    //  docRef.get().then((doc) => {
+    //     if(doc.exists){
+    //         console.log(doc.data().first + doc.data().last);
+    //         const logString = doc.data().first + " " + doc.data().last + " signed off on " + orderno + " (" + product + ") at station: " + station + ", with status: " + status +"." 
+    //         wait();
+    //         async function wait(){
+    //             let result = await Promise.resolve(db.collection("Log").add({log: logString}));
+    //         }
+    //     }
+    // });
 });
 
 
