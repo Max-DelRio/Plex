@@ -37,7 +37,7 @@
     <body>
 
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
                 <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
               </svg> Plex Art</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,9 +82,9 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Settings
+                      <a id="log" class="nav-link" href="log.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        Log
                       </a>
                     </li>
                     <li class="nav-item">
@@ -103,7 +103,7 @@
                 </div>
               </nav>
 
-              <div style="padding-left: 295px; padding-top: 25px;">
+              <div class="container-fluid" style="padding-left: 300px; padding-top: 25px;">
                 <div class="row">
                   <div class="col">
                     <div class="card" style="width: 25rem;">
@@ -112,12 +112,12 @@
                         <p class="card-text" style="color: black;">
                           <ul id="outOfStock" class="list-group">
                           <li class="list-group-item list-group-item-danger">
-                            <table id="materials" class="table table-light table-hover" >
+                            <table id="materials" class="table table-danger table-hover table-borderless" >
                               <thead>
                                 <tr>
                                 <!-- <th scope="col"></th> -->
                                 <th scope="col">Material</th>
-                                <th scope="col">est.</th>
+                                <th scope="col">Est. Delivery</th>
                                 </tr>
                               </thead>
                               <tbody id="oostable">
@@ -133,7 +133,6 @@
 
                           </li>
                         </ul></p>
-                        <a href="materials.html" class="card-link">Materials</a>
                       </div>
                     </div>
                   </div>
@@ -145,7 +144,7 @@
                         <p class="card-text" style="color: black;">
                           <ul id="lowStock" class="list-group">
                           <li class="list-group-item list-group-item-warning">
-                            <table id="materials" class="table table-light table-hover" >
+                            <table id="materials" class="table table-warning table-hover table-borderless" >
                               <thead>
                                 <tr>
                                 <!-- <th scope="col"></th> -->
@@ -164,7 +163,6 @@
                             </template>
                           </li>
                         </ul></p>
-                        <a href="materials.html" class="card-link">Materials</a>
                       </div>
                     </div>
                   </div>
@@ -176,13 +174,13 @@
                         <p class="card-text" style="color: black;">
                           <ul id="orderedStock" class="list-group">
                           <li class="list-group-item list-group-item-success">
-                            <table id="materials" class="table table-light table-hover" >
+                            <table id="materials" class="table table-success table-hover table-borderless" >
                               <thead>
                                 <tr>
                                 <!-- <th scope="col"></th> -->
                                 <th scope="col">Material</th>
                                 <th scope="col">Quantity</th>
-                                <th scope="col">est.</th>
+                                <th scope="col">Est. Delivery</th>
                                 </tr>
                               </thead>
                               <tbody id="orderedtable">
@@ -195,14 +193,8 @@
                                   <td></td>
                               </tr>
                             </template>
-
-                            
-
-
-                            
                           </li>
                         </ul></p>
-                        <a href="materials.html" class="card-link">Materials</a>
                       </div>
                     </div>
                   </div>
@@ -210,17 +202,6 @@
                 
               </div>
 
-              <template id="outStockLi">
-                <li class="list-group-item list-group-item-danger"></li>
-              </template>
-
-              <template id="lowStockLi">
-                <li class="list-group-item list-group-item-warning"></li>
-              </template>
-
-              <template id="orderedStockLi">
-                <li class="list-group-item list-group-item-sucess"></li>
-              </template>
     
     <!---bootstrap dependency--->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>

@@ -75,12 +75,12 @@
                             Tracking <span class="sr-only">(current)</span>
                         </a>
                       </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Settings
-                      </a>
-                    </li>
+                      <li class="nav-item">
+                        <a id="log" class="nav-link" href="log.html" style="display: none;">
+                          <span data-feather="bar-chart-2"></span>
+                          Log
+                        </a>
+                      </li>
                     <li class="nav-item">
                       <a id="um" class="nav-link" href="usermanagement.html" style="display: none;">
                         <span data-feather="bar-chart-2"></span>
@@ -99,11 +99,11 @@
             </div>
 
 
-      <div style="padding-left: 300px; padding-top: 25px;">
+      <div class="container-fluid" style="padding-left: 275px; padding-top: 25px;">
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#signoff" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
               Order Sign Off
             </button>
-            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px; margin-bottom: 10px;">
+            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
               Clear Selection
             </button>
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="height: 40px; width: 150px; margin-right: 10px; margin-bottom: 10px;">
@@ -185,20 +185,20 @@
                     <div class="modal-body">
                       <form id="addOrder">
                         <label for="aorderno" style="color: black;">Order No.</label>
-                        <input type="text" id="aorderno" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" >
+                        <input type="text" id="aorderno" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" required>
       
                         <label for="aproduct" style="color: black;">Product</label>
-                        <input type="text" id="aproduct" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" >
+                        <input type="text" id="aproduct" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" required>
       
                         
                         <label for="astatus" style="color: black;">Status</label>
-                        <select id="astatus" class="form-control">
+                        <select id="astatus" class="form-control" required>
                             <option value="recieved">recieved</option>
                             <option value="processing">processing</option>
                             <option value="sent">sent out</option>
                           </select>
                         <label for="ainstation" style="color: black;">Station</label>
-                        <select id="ainstation" class="form-control">
+                        <select id="ainstation" class="form-control" required>
                             <option value="CNC">CNC</option>
                             <option value="Sanding">Sanding</option>
                             <option value="Polishing">Polishing</option>
