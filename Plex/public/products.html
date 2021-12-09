@@ -20,12 +20,18 @@
     <!---jquery dependency--->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <style>
+      .employee {
+        display: none;
+      }
+    </style>
+
     </head>
 
     <body>
 
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
                 <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
               </svg> Plex Art</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,27 +58,27 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="materials.html">
+                        <a id="mat" class="nav-link" href="materials.html">
                             <span data-feather="home"></span>
                             Materials
                         </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="#">
+                      <a id="pro" class="nav-link active" href="products.html" style="display: none;">
                           <span data-feather="home"></span>
                           Products <span class="sr-only">(current)</span>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="tracking.html">
                         <span data-feather="users"></span>
                         Tracking
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Settings
+                      <a id="log" class="nav-link" href="log.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        Log
                       </a>
                     </li>
                     <li class="nav-item">
@@ -81,15 +87,49 @@
                         User Management
                       </a>
                     </li>
+                    <li class="nav-item">
+                      <a id="log" class="nav-link" href="log.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        Log
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </nav>
             </div>
 
 
-      <div style="padding-left: 300px; padding-top: 25px;">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
-          Add Product
+      <div class="container-fluid" style="padding-left: 275px; padding-top: 25px;">
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="height: 40px; width: 150px;">
+              Add Product
+            </button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#edit" style="height: 40px; width: 150px; margin: 10px;">
+              Edit Product
+            </button>
+            <button type="button" class="btn btn-dark" id="clear" style="height: 40px; width: 150px;">
+              Clear Selection
+            </button>
+        <form id="sort">
+          <div style="float: left;">
+          <select id="sortCate" class="form-control" style="width: 150px; margin-right: 5px;">
+            <option value="select">Select...</option>
+            <option value="name">Name</option>
+            <option value="id">ID</option>
+            <option value="category">Category</option>
+            <option value="quantity">Quantity</option>
+          </select>
+        </div>
+        <div style="float: left;">
+            <input type="text" id="query" class="form-control" placeholder="Search" aria-describedby="addon-wrapping" style="height: 40px; width: 150px; margin-left: 10px;">
+          </div>
+          <div style="float: left;">
+            <button type="button" class="btn btn-dark" id="filter" style="height: 40px; width: 150px; margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">
+              Filter
+            </button>
+          </div>
+        </form>
+        <button type="button" class="btn btn-dark" id="clearFilter" style="height: 40px; width: 150px; margin-bottom: 10px;">
+          Clear Filter
         </button>
         
         <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -104,13 +144,13 @@
               <div class="modal-body">
                 <form id="addProduct">
                   <label for="name" style="color: black;">Product Name</label>
-                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping">
+                  <input type="text" id="name" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" required>
 
                   <label for="ID" style="color: black;">ID</label>
-                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping">
+                  <input type="text" id="ID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" required>
 
                   <label for="category" style="color: black;">Category</label>
-                  <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping">
+                  <input type="text" id="category" class="form-control" placeholder="Category" aria-describedby="addon-wrapping" required>
 
                   <label for="quantity" style="color: black;">Quantity</label>
                   <input type="text" id="quantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
@@ -123,7 +163,39 @@
           </div>
         </div>
 
-        <table class="table table-light table-hover">
+        <div> 
+          <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Add Product</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id="editProduct">
+                    <label for="ename" style="color: black;">Product Name</label>
+                    <input type="text" id="ename" class="form-control" placeholder="Product Name" aria-describedby="addon-wrapping" required>
+  
+                    <label for="eID" style="color: black;">ID</label>
+                    <input type="text" id="eID" class="form-control" placeholder="ID" aria-describedby="addon-wrapping" required>
+  
+                    <label for="ecategory" style="color: black;">Category</label>
+                    <input type="text" id="ecategory" class="form-control" placeholder="Category" aria-describedby="addon-wrapping" required>
+  
+                    <label for="equantity" style="color: black;">Quantity</label>
+                    <input type="text" id="equantity" class="form-control" placeholder="Quantity" aria-describedby="addon-wrapping">
+                    <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark" style="width: 100px; margin: 10px;">Edit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <table id="products" class="table table-light table-hover">
         <thead>
             <tr>
             <th scope="col"></th>
@@ -145,10 +217,11 @@
             <td></td>
             <td></td>
             <td></td>
+            <td style="display: none;"></td>
                 <td>
                     <form>
-                        <input id="update_quantity" class="form-control" type="text" style="width: 50px; height: 30px;">
-                        <td><button class="btn btn-dark d-flex justify-content-center" type="submit" style="height: 30px; align-items: center;">Save</button></td>
+                        <input class="form-control" type="text" style="width: 50px; height: 30px;" required>
+                        <td><button class="btn btn-dark d-flex justify-content-center" type="submit" onsubmit="editQuantity()" style="height: 30px; align-items: center;">Save</button></td>
                     </form>
                 </td>
             <td><button class="btn btn-dark d-flex justify-content-center" type="button" style="height: 30px; align-items: center;">Delete</button></td>

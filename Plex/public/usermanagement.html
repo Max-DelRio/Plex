@@ -53,14 +53,13 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="materials.html">
+                      <a id="mat" class="nav-link" href="materials.html" style="display: none;">
                         <span data-feather="file"></span>
                         Materials
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="products.html">
-                        <span data-feather="shopping-cart"></span>
+                      <a id="pro" class="nav-link" href="products.html" style="display: none;">
                         Products
                       </a>
                     </li>
@@ -71,9 +70,9 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Settings
+                      <a id="log" class="nav-link" href="log.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        Log
                       </a>
                     </li>
                     <li class="nav-item">
@@ -82,12 +81,18 @@
                         User Management <span class="sr-only">(current)</span>
                       </a>
                     </li>
+                    <li class="nav-item">
+                      <a id="log" class="nav-link" href="log.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        Log
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </nav>
     </div>
 
-    <div style="padding-left: 300px; padding-top: 25px;">
+    <div class="container-fluid" style="padding-left: 275px; padding-top: 25px;"">
       <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#add" style="margin-bottom: 10px;">
         Add User
       </button>
@@ -161,8 +166,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 
-    <script type="module" src="./js/usermanagement.js"></script>
     <script type="module" src="./js/admin.js"></script>
+    <script type="module" src="./js/usermanagement.js"></script>
     <script type="module" src="./js/signout.js"></script>
   
   </body>

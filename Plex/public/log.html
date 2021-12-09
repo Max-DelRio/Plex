@@ -20,7 +20,13 @@
     <!---jquery dependency--->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    </head>
+    <style>
+      .employee {
+        display: none;
+      }
+    </style>
+
+  </head>
 
     <body>
 
@@ -33,7 +39,9 @@
             </button>
             <ul class="navbar-nav px-3">
               <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
+                <form id="logout">
+                  <button type="submit" class="nav-link" style="background-color:transparent; border: transparent;">Sign out</button>
+                  </form>
               </li>
             </ul>
           </nav>
@@ -44,51 +52,85 @@
                 <div class="sidebar-sticky pt-3">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#">
+                      <a class="nav-link" href="dashboard.html">
                         <span data-feather="home"></span>
-                        Dashboard <span class="sr-only">(current)</span>
+                        Dashboard
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="file"></span>
-                        Products
+                        <a id="mat" class="nav-link" href="materials.html" style="display: none;">
+                            <span data-feather="home"></span>
+                            Materials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="pro" class="nav-link" href="products.html" style="display: none;">
+                          <span data-feather="home"></span>
+                          Products
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="shopping-cart"></span>
-                        Materials
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="tracking.html">
                         <span data-feather="users"></span>
                         Tracking
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="bar-chart-2"></span>
-                        User Management
+                      <a id="log" class="nav-link active" href="log.html" style="display: none;">
+                          <span data-feather="bar-char-2"></span>
+                          Log <span class="sr-only">(current)</span>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <span data-feather="layers"></span>
-                        Settings
+                      <a id="um" class="nav-link" href="usermanagement.html" style="display: none;">
+                        <span data-feather="bar-chart-2"></span>
+                        User Management
                       </a>
                     </li>
                   </ul>
                 </div>
               </nav>
-    
-      <!---bootstrap dependency--->
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+            </div>
 
+            <div class="container-fluid" style="padding-left: 275px; padding-top: 25px;">
+              <table id="logs" class="table table-striped table-light table-hover" >
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Log</th>
+                    <th scope="col">Date/Time</th>
+                  </tr>
+                </thead>
+                  <tbody id="logT">
+                </tbody>
+              </table>
+              <template id="logRow">
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </template>
+            </div>
+    
+
+    <!---bootstrap dependency--->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+
+    <!---firebase js sdk--->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    
+    <script type="module" src="./js/admin.js"></script>
+    <script type="module" src="./js/signout.js"></script>
+    <script type="module" src="./js/log.js"></script>
+    
     </body>
 
 </html>
