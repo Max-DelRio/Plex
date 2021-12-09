@@ -235,6 +235,7 @@ document.querySelector("#cFilter").addEventListener("click", function table(e){
     e.preventDefault();
     document.getElementById("table").innerHTML="";
     queryDB();
+    count = 1;
 });
 
 document.querySelector("#addOrder").addEventListener("submit", function AddOrder(e) {

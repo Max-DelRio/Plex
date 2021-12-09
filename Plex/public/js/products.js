@@ -235,6 +235,7 @@ document.querySelector("#clearFilter").addEventListener("click", function table(
     e.preventDefault();
     document.getElementById("table").innerHTML="";
     queryDB();
+    count = 1;
 });
 
 
