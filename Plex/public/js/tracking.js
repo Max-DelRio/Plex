@@ -18,6 +18,7 @@ var uid;
 var count = 1;
 var edit;
 var row;
+var userRole;
 
 window.addEventListener('DOMContentLoaded', (event) => {
     auth.onAuthStateChanged((user) => {
@@ -101,19 +102,30 @@ function queryDB(){
                         location.reload();
                     }
                 }
-                button[1].onclick = function() {
-                    var choice = confirm("Do you want to delete this tracking order?");
-                    if(choice){
-                        wait();
-                        async function wait(){
-                            let result = await Promise.resolve(db.collection("Tracking").doc(id).delete());
+              
+                    button[1].onclick = function() {
+                        var choice = confirm("Do you want to delete this tracking order?");
+                        if (userRole == "Admin")
+                        {
+                            if(choice){
+                                wait();
+                                async function wait(){
+                                    let result = await Promise.resolve(db.collection("Tracking").doc(id).delete());
+                                    location.reload();
+                                }
+                            }
+                            else{
+                                location.reload();
+                            }
+                        }
+                        else{
+                            window.alert("You are NOT authorized to delete tracking orders");
                             location.reload();
                         }
+                        
                     }
-                    else{
-                        location.reload();
-                    }
-                }
+                
+               
                 tbody.appendChild(clone);
             }
             count++;

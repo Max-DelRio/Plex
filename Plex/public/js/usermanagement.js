@@ -69,12 +69,14 @@ db.collection("Users").get().then((querySnapshot) => {
 //event listener for add user submission
 document.querySelector("#addUser").addEventListener("submit", function AddUser(e) {
         e.preventDefault();
+        
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
         
         //using second app initialization to create new user
         newUser.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
+           
             const user = userCredential.user.uid;
             //sign out new user to keep current user logged in
             newUser.auth().signOut();
@@ -88,6 +90,7 @@ document.querySelector("#addUser").addEventListener("submit", function AddUser(e
                 let result = await Promise.resolve(db.collection("Users").doc(user).set({first: first,last: last,email: email,role: role}));
                 location.reload();
             }
+            
         }).then(() => {
             alert("User Added");
         }, err => {
