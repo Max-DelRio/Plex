@@ -30,11 +30,40 @@ db.collection("Users").get().then((querySnapshot) => {
             td[1].textContent = doc.data().last;
             td[2].textContent = doc.data().email;
             td[3].textContent = doc.data().role;
+            
+            var button = clone.querySelectorAll("button");
+
+            button[0].onclick = function() {
+                var choice = confirm("Do you want to delete this User?");
+                if(choice){
+                    wait();
+                    async function wait(){
+                        let result = await Promise.resolve(db.collection("Users").doc(tr.id).delete());
+                        location.reload();
+                    }
+                }
+                else{
+                    location.reload();
+                }
+            }
 
             //append to html user table
             tbody.appendChild(clone);
         }
     });
+    // var table = document.getElementById("users");
+    // var rows = table.querySelectorAll("tr");
+    // for(var i = 1; i < rows.length; i++){
+    //     rows[i].onclick = function(){
+    //         row = this;
+    //         $(this).css("background-color", "#eaeaeb");
+    //         document.getElementById("first").value = this.cells[1].innerHTML;
+    //         document.getElementById("last").value = this.cells[2].innerHTML;
+    //         document.getElementById("email").value = this.cells[3].innerHTML;
+    //         document.getElementById("role").value = this.cells[4].innerHTML;
+    //         edit = this.cells[5].innerHTML;
+    //     }
+    // }
 });
 
 //event listener for add user submission
