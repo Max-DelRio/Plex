@@ -62,7 +62,7 @@ function queryDB(){
                 td[4].textContent = doc.data().status;
                 td[5].textContent = id;
                 var button = clone.querySelectorAll("button");
-                tbody.appendChild(clone);
+                
                 var docRef = db.collection("Users").doc(uid);
                 button[0].onclick = function() {
                     var choice = confirm("Do you want to change the status to finished?");
@@ -101,6 +101,20 @@ function queryDB(){
                         location.reload();
                     }
                 }
+                button[1].onclick = function() {
+                    var choice = confirm("Do you want to delete this tracking order?");
+                    if(choice){
+                        wait();
+                        async function wait(){
+                            let result = await Promise.resolve(db.collection("Tracking").doc(id).delete());
+                            location.reload();
+                        }
+                    }
+                    else{
+                        location.reload();
+                    }
+                }
+                tbody.appendChild(clone);
             }
             count++;
         });
